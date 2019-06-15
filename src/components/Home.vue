@@ -5,8 +5,8 @@
       <p class="lead">Simple app to stay on track</p>
       <hr class="my-4">
       <p>TEMP</p>
-      <a class="btn btn-primary btn-lg" @click="toAuth" role="button">Login</a>
-      <a class="btn btn-primary btn-lg" @click="toAuth" role="button">Sign Up</a>
+      <router-link class="btn btn-primary btn-lg" :to="{name: 'Auth'}" role="button">Login</router-link>
+      <router-link class="btn btn-primary btn-lg" :to="{name: 'Auth'}" role="button">Sign Up</router-link>
     </div>
 
   </div>
@@ -16,10 +16,8 @@
     import routes from '../routes/routes'
 
   export default {
-      methods: {
-          toAuth(){
-              this.$router.push(routes.auth)
-          }
+      data(){
+        return{routes,}
       }
   }
 </script>
