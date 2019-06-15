@@ -7,7 +7,12 @@
     <div>
       <h2 class="display-5 text-left">About this site</h2>
         <ul>
-          <li></li>
+          <li>Using a reward based system dramatically increases a users desire to accomplish tasks </li>
+          <li>We designed a re-entry program based off this idea</li>
+          <li>Users will create accounts, set milestones, accomplish tasks, and level up</li>
+          <li>Resources will become available based off keywords from user created milestones</li>
+          <li>We accomplished the challenge by providing users with an interactive way to stay motivated about accomplishing re-entry tasks</li>
+          <li>We also supplied users with a searched based resource finder that focuses on just what is near them</li>
 
         </ul>
 
