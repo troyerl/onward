@@ -4,9 +4,10 @@ import Router from 'vue-router'
 import routes from './routes'
 import Home from '../components/Home'
 import Auth from '../components/Auth'
-import Dashboard from "../components/Dashboard/Dashboard";
-import Profile from "../components/Dashboard/Profile";
-import Milestones from "../components/Dashboard/Milestones";
+import Dashboard from "../components/Dashboard";
+import Profile from "../components/Profile";
+import Milestones from "../components/Milestones";
+import MilestonesForm from "../components/MilestonesForm";
 
 Vue.use(Router)
 
@@ -33,14 +34,19 @@ const router = new Router({
       component: Dashboard
     },
     {
-      path: '/user/dashboard/profile',
+      path: '/user/profile',
       name: 'Profile',
       component: Profile
     },
     {
-      path: '/user/dashboard/milestones',
+      path: '/user/milestones',
       name: 'Milestone',
       component: Milestones
+    },
+    {
+      path: '/user/milestones-form',
+      name: 'MilestoneForm',
+      component: MilestonesForm
     }
   ]
 })
