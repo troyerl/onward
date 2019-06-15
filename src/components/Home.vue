@@ -13,7 +13,6 @@
   export default {
     data() {
       return {
-        routes,
         authLinks: ['Login', 'Sign Up']
       }
     }
