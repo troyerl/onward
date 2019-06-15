@@ -5,15 +5,21 @@
       <p class="lead">Simple app to stay on track</p>
       <hr class="my-4">
       <p>TEMP</p>
-      <a class="btn btn-primary btn-lg" href="/" role="button">Login</a>
-      <a class="btn btn-primary btn-lg" href="/" role="button">Sign Up</a>
+      <a class="btn btn-primary btn-lg" @click="toAuth" role="button">Login</a>
+      <a class="btn btn-primary btn-lg" @click="toAuth" role="button">Sign Up</a>
     </div>
 
   </div>
 </template>
 
 <script>
-  export default {
+    import routes from '../routes/routes'
 
+  export default {
+      methods: {
+          toAuth(){
+              this.$router.push(routes.auth)
+          }
+      }
   }
 </script>
