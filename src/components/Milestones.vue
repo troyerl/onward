@@ -1,5 +1,5 @@
 <template>
-  <div id="milestones">
+  <div id="milestones" class="mb-5">
     <div class="container text-center">
       <div class="row">
         <div class="col">
@@ -11,18 +11,24 @@
       <div class="row">
         <div class="col">
           <div class="jumbotron jumbo-example text-left" v-for="ms in milestones">
-            <h1 class="mb-4">{{ms.title}}</h1>
+            <h3 class="mb-4">{{ms.title}}</h3>
             <hr>
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center" v-for="task in ms.tasks">
-                {{task.title}}
-                <span class="badge badge-dark badge-pill">points: {{task.points}}</span>
-              </li>
-            </ul>
+            <div class="accordion" :id="'m' + ms.ref.id | first5">
+              <div class="card" v-for="task in ms.tasks" style="cursor: pointer">
+                <div class="card-header" id="headingOne" data-toggle="collapse"
+                     :data-target="'#t' + task.ref.id | first5">
+                  <p class="mb-0 d-flex justify-content-between align-items-center font-weight-bold text-danger">
+                    {{task.title}}
+                    <span class="badge badge-dark badge-pill">points: {{task.points}}</span>
+                  </p>
+                </div>
+                <Resources :task="task" :ms="ms"></Resources>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <router-link class="btn btn-danger btn-lg" :to="{name: 'MilestoneForm'}" role="button">Add Milestone
+      <router-link class="btn btn-outline-danger btn-lg" :to="{name: 'MilestoneForm'}" role="button">Add Milestone
       </router-link>
     </div>
   </div>
@@ -31,30 +37,23 @@
 <script>
   import fb from '../fb'
   import {mapMutations, mapState} from "vuex";
-  import {UPDATE_MILESTONES} from "../store/mutationsTypes";
+  import {UPDATE_CURRENT_MILESTONE, UPDATE_MILESTONES} from "../store/mutationsTypes";
+  import Resources from './Resources'
 
   export default {
     name: "Milestones",
-      data (){
-        return {
-            title: 'Test Milestone',
-            tasks: [
-                {
-                    title: ''
-                }
-            ],
-            disable: []
-        }
-      },
-      methods: {
-        disableCheck (e) {
-            this.disable.unshift(e.target.target)
-        },
-        check (e) {
-            let test = this.disable.filter(test => test === e.target.target)
-            console.log(test)
-        }
-      },
+    components: {
+      Resources
+    },
+    filters: {
+      first5: (val) => {
+        return val.charAt(0) === '#' ? val.substr(0, 6) : val.substr(0, 5)
+      }
+    },
+    data() {
+      return {
+      }
+    },
     computed: {
 
       ...mapState('user', {
@@ -68,6 +67,9 @@
 
       ...mapMutations('milestones', {
         updateMilestones: UPDATE_MILESTONES,
+      }),
+      ...mapMutations('user', {
+        updateCurrentMilestone: UPDATE_CURRENT_MILESTONE,
       })
     },
     created() {
@@ -76,6 +78,7 @@
         let milestones = []
         msRefs.forEach((msRef) => {
           msRef.get().then((msDoc) => {
+            console.log(msDoc.data())
             let taskRefs = msDoc.data().tasks
             let tasks = []
             taskRefs.forEach((taskRef) => {
@@ -89,6 +92,7 @@
           })
         })
         this.updateMilestones(milestones)
+        this.updateCurrentMilestone(milestones[0])
       })
     }
   }

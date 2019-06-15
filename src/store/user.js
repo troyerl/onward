@@ -1,11 +1,12 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
-import {SET_CURRENT_USER, SET_PROFILE} from './mutationsTypes'
+import {SET_CURRENT_USER, SET_PROFILE, UPDATE_CURRENT_MILESTONE} from './mutationsTypes'
 import fb from '../fb'
 
 
 const state = {
   currentUser: null,
-  userProfile: {}
+  userProfile: {},
+  currentMS: {},
 }
 
 // Getters are to Vuex state as 'computed' is to individual components
@@ -42,6 +43,10 @@ const mutations = {
   [SET_CURRENT_USER](state, payload) {
     state.currentUser = payload
   },
+
+  [UPDATE_CURRENT_MILESTONE] (state, payload) {
+    state.currentMS = payload
+  }
 }
 
 // Actions are how to do ASYNC work (eg, reach out to backend), and will eventually COMMIT a mutation
@@ -94,7 +99,8 @@ const actions = {
               lastName: creds.lastName,
               dob: creds.dob,
               xp: 0,
-              milestones: []
+              milestones: [],
+              level: 1
             }
             fb.db.collection('users').doc(userId).set(user)
                 .then((res) => {
@@ -115,7 +121,18 @@ const actions = {
         reject(err)
       })
     })
-  }
+  },
+    updatePoints(context, task){
+        return new Promise((resolve, reject)=> {
+            fb.db.collection('user').doc(context.state.currentUser.uid).update({
+                xp: task.xp
+            }).then(()=>{
+                resolve()
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    }
 }
 
 export default {
