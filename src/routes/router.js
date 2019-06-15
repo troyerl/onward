@@ -18,7 +18,7 @@ const router = new Router({
         {
             path: routes.auth,
             name: 'Auth',
-            component:Auth
+            component: Auth
         }
     ]
 })
