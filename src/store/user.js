@@ -1,6 +1,7 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
 import {SET_CURRENT_USER} from './mutationsTypes'
 import fb from '../fb'
+import uuidv4 from 'uuid/v4'
 
 const state = {
   currentUser: null,
@@ -72,6 +73,14 @@ const actions = {
       fb.auth.createUserWithEmailAndPassword(creds.email, creds.password)
           .then((res) => {
             context.commit(SET_CURRENT_USER, res.user)
+            let userId = uuidv4()
+            fb.db.collection('users').doc(userId).set({
+              email: creds.email,
+              firstName: creds.firstName,
+              lastName: creds.lastName,
+              dob: creds.dob,
+              xp: 0
+            })
             resolve()
           }).catch((err) => {
         reject(err)
