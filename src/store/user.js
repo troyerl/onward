@@ -66,7 +66,6 @@ const actions = {
       })
     })
   },
-
   signup(context, creds) {
     return new Promise((resolve, reject) => {
       fb.auth.createUserWithEmailAndPassword(creds.email, creds.password)
@@ -78,6 +77,16 @@ const actions = {
       })
     })
   },
+    logout(context){
+      return new Promise((resolve,reject) => {
+          fb.auth.signOut().then(() => {
+              context.commit(SET_CURRENT_USER, null)
+              resolve()
+          }).catch((err) => {
+              reject(err)
+          })
+      })
+    }
 }
 
 export default {

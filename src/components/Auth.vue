@@ -111,7 +111,8 @@
 
       ...mapActions('user', [
         'login',
-        'signup'
+        'signup',
+        'logout'
       ]),
     }
   }
