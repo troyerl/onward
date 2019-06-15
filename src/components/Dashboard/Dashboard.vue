@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
     name: "Dashboard",
     data() {
@@ -22,6 +23,11 @@
         level: 1,
         name: "Daniel"
       }
+    },
+    computed: {
+      ...mapState('user', {
+        profile: state => state.userProfile
+      }),
     }
   }
 </script>
