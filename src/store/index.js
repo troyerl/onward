@@ -28,8 +28,27 @@ fb.auth.onAuthStateChanged((curUser) => {
 })
 
 const state = {
-
+  resources: [
+    {
+      data: [],
+      ref: fb.db.collection('data').doc('job').collection('resources'),
+      keywords: ['Apply', 'Application', 'app', 'Job', 'Work', 'resume', 'profession', 'position', 'go']
+    },
+    {
+      data: [],
+      ref: fb.db.collection('data').doc('education').collection('resources'),
+      keywords: ['Education', 'School' , 'classes', 'career', 'GED']
+    }
+  ]
 }
+
+state.resources.forEach(res => {
+  res.ref.onSnapshot(snapshot => {
+    snapshot.forEach(doc => {
+      res.data.push(doc.data())
+    })
+  })
+})
 
 const store = new Vuex.Store({
   state,

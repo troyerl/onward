@@ -78,7 +78,6 @@
         let milestones = []
         msRefs.forEach((msRef) => {
           msRef.get().then((msDoc) => {
-            console.log(msDoc.data())
             let taskRefs = msDoc.data().tasks
             let tasks = []
             taskRefs.forEach((taskRef) => {
@@ -97,7 +96,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
