@@ -1,4 +1,4 @@
 export default {
   index: '/',
-  auth: '/user/auth'
+  auth: '/auth'
 }
