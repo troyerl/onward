@@ -8,6 +8,7 @@
       <a class="btn btn-primary btn-lg" href="/" role="button">Login</a>
       <a class="btn btn-primary btn-lg" href="/" role="button">Sign Up</a>
     </div>
+
   </div>
 </template>
 
