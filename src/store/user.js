@@ -1,8 +1,6 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
 import {SET_CURRENT_USER, SET_PROFILE} from './mutationsTypes'
 import fb from '../fb'
-import uuidv4 from 'uuid/v4'
-import firebase from 'firebase'
 
 
 const state = {
