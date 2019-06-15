@@ -7,7 +7,7 @@
           <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 100%" :style="{width: profile.xp + '%'}">{{profile.xp}}%</div>
         </div>
       <p style="display: inline-block; margin-left: 20px">Level {{level + 1}}</p>
-      <h4>Welcome back {{profile.firstName + " " + profile.lastName}}!</h4>
+      <h3>Welcome back {{profile.firstName}}!</h3>
     </div>
     <p>Current Milestones: </p>
   </div>
