@@ -14,9 +14,9 @@
                 <input v-model="formLogin.password" type="password" class="form-control" id="exampleInputPassword1"
                        placeholder="Password" required>
               </div>
-              <button type="submit" @click="loginUser" class="btn btn-primary">Login</button>
+              <button type="submit" @click="loginUser" class="btn btn-danger">Login</button>
               <div>
-                <small>Don't have an account? <a @click="toggleForm" class="text-primary">Create an Account</a></small>
+                <small>Don't have an account? <a @click="toggleForm" class="text-danger">Create an Account</a></small>
               </div>
             </form>
             <form @submit.prevent v-else>
@@ -39,9 +39,9 @@
                 <input v-model="formSignUp.confirmPassword" type="password" class="form-control" id="confirmPassword"
                        placeholder="Confirm Password" required>
               </div>
-              <button @click="signupUser" type="submit" class="btn btn-primary">Signup</button>
+              <button @click="signupUser" type="submit" class="btn btn-danger">Signup</button>
               <div>
-                <small>Already have an account? <a @click="toggleForm" class="text-primary">Login</a></small>
+                <small>Already have an account? <a @click="toggleForm" class="text-danger">Login</a></small>
               </div>
             </form>
           </div>
