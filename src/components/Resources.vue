@@ -10,6 +10,7 @@
             <p>{{res.addressLine1}}<br>{{res.addressLine2}}</p>
             <p>{{res.desc}}</p>
             <a :href="res.website">{{res.website}}</a>
+            <div>{{setState()}}</div>
           </div>
         </div>
       </div>
@@ -30,7 +31,10 @@
     name: "Resources",
     computed: {
       setState() {
-
+        this.resources[0].ref.get().then((doc) => {
+          this.state = doc.data()
+        })
+        console.log(this.state)
       }
     },
     data() {
