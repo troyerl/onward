@@ -3,9 +3,7 @@ import fb from '../fb'
 import {SET_CURRENT_USER, SET_PROFILE} from "./mutationsTypes";
 import uuidv4 from 'uuid/v4'
 
-const state = {
-
-}
+const state = {}
 
 // Getters are to Vuex state as 'computed' is to individual components
 const getters = {
@@ -66,12 +64,16 @@ const actions = {
         })
       })
 
-      let mid = uuidv4()
-      fb.db.collection('milestones').doc(mid).set({
+      let msId = uuidv4()
+      let msRef = fb.db.collection('milestones').doc(msId)
+      msRef.set({
         title: milestone.title,
         dueDate: milestone.dueDate,
         tasks: taskRefs,
       }).then(() => {
+        fb.db.collection('users').doc(context.rootState.user.currentUser.uid).update({
+          milestones: [...context.rootState.user.userProfile.milestones, msRef]
+        })
         resolve()
       }).catch((err) => {
         reject(err)
