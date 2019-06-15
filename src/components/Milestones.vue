@@ -1,35 +1,23 @@
 <template>
   <div id="milestones">
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
         <div class="col">
           <h1 class="display-4 text-center mt-5">Milestones</h1>
           <div class="mt-4 mb-4 text-center">
-            <router-link class="btn btn-primary btn-lg" :to="{name: 'MilestoneForm'}" role="button">Add Milestone
-            </router-link>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <div class="jumbotron jumbo-example">
-            <h1 class="text-center mb-4">Example: Get a Job</h1>
+          <div class="jumbotron jumbo-example text-left" v-for="ms in milestones">
+            <h1 class="mb-4">{{ms.title}}</h1>
             <hr>
-            <div class="example-group">
-              <div>
-                <ul>
-                  <li v-for="ms in milestones">
-                    {{ms.title}}
-                    <ul>
-                      <li v-for="task in ms.tasks">{{task.title}}</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>
+      <router-link class="btn btn-primary btn-lg" :to="{name: 'MilestoneForm'}" role="button">Add Milestone
+      </router-link>
     </div>
   </div>
 </template>
@@ -76,10 +64,11 @@
             let tasks = []
             taskRefs.forEach((taskRef) => {
               taskRef.get().then((taskDoc) => {
-                tasks.push(taskDoc.data())
+                let task = {...taskDoc.data(), ref: taskRef}
+                tasks.push(task)
               })
             })
-            let milestone = {...msDoc.data(), tasks: tasks}
+            let milestone = {...msDoc.data(), tasks: tasks, ref: msRef}
             milestones.push(milestone)
           })
         })
