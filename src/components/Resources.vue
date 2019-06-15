@@ -4,7 +4,7 @@
          :data-parent="'#m' + ms.ref.id | first5">
       <div class="card-body bg-light">
         <p class="text-info">Perhaps these resources would help you:</p>
-        <div class="card my-1" v-for="res in resources">
+        <div class="card my-1" v-for="res in fakeResources">
           <div class="card-body">
             <p class="font-weight-bold">{{res.name}}</p>
             <p>{{res.addressLine1}}<br>{{res.addressLine2}}</p>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+
+  import firebase from 'firebase'
   export default {
     props: ['task', 'ms'],
     filters: {
@@ -26,22 +28,22 @@
       }
     },
     name: "Resources",
+    computed: {
+      setState() {
+        this.resources.map
+      }
+    },
     data() {
       return {
+        state: [],
         resources: [
           {
-            name: 'Job Hunters Inc',
-            website: 'https://jobhunt.com',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto at culpa cumque cupiditate dicta excepturi exercitationem expedita facere id, ipsa minus mollitia nam quia ratione sapiente similique sit voluptatum.',
-            addressLine1: '123 Main St',
-            addressLine2: 'Indinapolis, IN 46204'
+            ref: firebase.db.collection('data').doc('job').collection('resources'),
+            keywords: ['Apply', 'Application', 'app', 'Job', 'Work', 'resume', 'profession', 'position']
           },
           {
-            name: 'Resume Help Inc',
-            website: 'https://resumehelp.com',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto at culpa cumque cupiditate dicta excepturi exercitationem expedita facere id, ipsa minus mollitia nam quia ratione sapiente similique sit voluptatum.',
-            addressLine1: '456 First St',
-            addressLine2: 'Indinapolis, IN 46204'
+            ref: firebase.db.collection('data').doc('education').collection('resources'),
+            keywords: ['Education', 'School' , 'classes', 'career', 'GED']
           }
         ]
       }

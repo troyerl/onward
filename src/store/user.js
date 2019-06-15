@@ -121,7 +121,18 @@ const actions = {
         reject(err)
       })
     })
-  }
+  },
+    updatePoints(context, task){
+        return new Promise((resolve, reject)=> {
+            fb.db.collection('user').doc(context.state.currentUser.uid).update({
+                xp: task.xp
+            }).then(()=>{
+                resolve()
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    }
 }
 
 export default {
