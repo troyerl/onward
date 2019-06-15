@@ -13,8 +13,16 @@ fb.auth.onAuthStateChanged((curUser) => {
     store.commit(`user/${SET_CURRENT_USER}`, curUser)
     store.dispatch(`user/fetchUserProfile`)
 
-    fb.usersCollection.doc(curUser.uid).onSnapshot((doc) => {
-      store.commit(`user/${SET_PROFILE}`, doc.data())
+    let userRef = fb.usersCollection.doc(curUser.uid)
+
+    userRef.onSnapshot((doc) => {
+      let profile = doc.data()
+      if (profile.xp >= 100) {
+        profile.xp -= 100
+        profile.level++
+        userRef.update(profile)
+      }
+      store.commit(`user/${SET_PROFILE}`, profile)
     })
   }
 })
