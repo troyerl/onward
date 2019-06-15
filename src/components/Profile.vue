@@ -22,7 +22,7 @@
                 <input v-model="profile.dob" type="dob" class="form-control" id="exampleInputDOB1"
                        placeholder="Date of Birth">
               </div>
-              <button type="submit" @click="save" class="btn btn-primary">Save Changes</button>
+              <button type="submit" @click="save" class="btn btn-danger">Save Changes</button>
             </form>
           </div>
         </div>
