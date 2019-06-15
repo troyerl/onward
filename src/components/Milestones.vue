@@ -9,19 +9,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="jumbotron jumbo-example">
-                        <h1 class="text-center mb-4">Example: Get a Job</h1>
-                        <hr>
-                        <div class="example-group">
-                            <div>
-
-                            </div>
-                        </div>
-                    </div>
+                <h4 class=" mb-4">Milestone Title</h4>
+                <div style="display: inline;">
+                    <p>Task</p>
+                    <input type="checkbox" name="test" value="test" @click="disabled"/>
                 </div>
-            </div>
+                <hr>
         </div>
     </div>
 </template>
@@ -36,7 +29,17 @@
                 {
                     title: ''
                 }
-            ]
+            ],
+            disable: []
+        }
+      },
+      methods: {
+        disableCheck (e) {
+            this.disable.unshift(e.target.target)
+        },
+        check (e) {
+            let test = this.disable.filter(test => test === e.target.target)
+            console.log(test)
         }
       }
   }
