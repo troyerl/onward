@@ -64,9 +64,7 @@ const actions = {
             fb.auth.signInWithEmailAndPassword(creds.email, creds.password)
                 .then((res) => {
                     const userId = res.user.uid
-                    console.log(userId)
                     fb.db.collection('users').doc(userId).get().then((doc) => {
-                        console.log(doc.data())
                         context.commit(SET_CURRENT_USER, res.user)
                         context.commit(SET_PROFILE, doc.data())
                         resolve()
@@ -75,6 +73,14 @@ const actions = {
                 reject(err)
             })
         })
+    },
+    fetchUserProfile(context) {
+      return new Promise((resolve, reject) => {
+        fb.db.collection('users').doc(context.state.currentUser.uid).get().then((doc) => {
+          let user = doc.data()
+          context.commit(SET_PROFILE, user)
+        })
+      })
     },
     signup(context, creds) {
         return new Promise((resolve, reject) => {
@@ -92,6 +98,7 @@ const actions = {
                     fb.db.collection('users').doc(userId).set(user)
                         .then((res) => {
                             context.commit(SET_PROFILE, user)
+                          resolve()
                         })
                 }).catch((err) => {
                 reject(err)

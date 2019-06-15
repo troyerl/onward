@@ -1,5 +1,6 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
 import fb from '../fb'
+import {SET_CURRENT_USER, SET_PROFILE} from "./mutationsTypes";
 
 const state = {
 
@@ -50,7 +51,7 @@ const actions = {
 }
 
 export default {
-  namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
+  namespaced: false, // makes us use store.<module>.xyz, instead of one global store.xyz
   state,
   mutations,
   actions
