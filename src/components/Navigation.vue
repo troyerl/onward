@@ -30,8 +30,10 @@
   import {mapstate} from 'vuex'
 
   export default {
-    /*computed: {
-      ...mapstate(['currentUser'])
-    }*/
+    computed: {
+      ...mapstate('user', [
+        'currentUser'
+      ])
+    }
   }
 </script>

@@ -1,5 +1,5 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
-import { SET_CURRENT_USER } from './mutationsTypes'
+import {SET_CURRENT_USER} from './mutationsTypes'
 import fb from '../fb'
 
 const state = {
@@ -36,7 +36,7 @@ const mutations = {
 
   */
 
-  [SET_CURRENT_USER] (state, payload) {
+  [SET_CURRENT_USER](state, payload) {
     state.currentUser = payload
   },
 }
@@ -55,7 +55,7 @@ const actions = {
     call with: ...mapActions['egAction'], then this.egAction(payload)
   */
 
-  login (context, creds) {
+  login(context, creds) {
     return new Promise((resolve, reject) => {
       fb.auth.signInWithEmailAndPassword(creds.email, creds.password)
           .then((res) => {
@@ -67,7 +67,7 @@ const actions = {
     })
   },
 
-  signup (context, creds) {
+  signup(context, creds) {
     return new Promise((resolve, reject) => {
       fb.auth.createUserWithEmailAndPassword(creds.email, creds.password)
           .then((res) => {
