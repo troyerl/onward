@@ -1,4 +1,4 @@
-import routes from 'routes'
+import routes from './routes'
 
 import Home from '../components/Home'
 import Auth from '../components/Auth'

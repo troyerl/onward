@@ -1,7 +1,6 @@
-import Vue from 'vue'
 import firebase from 'firebase'
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyC5OzS0p9OBBTk1wyTT5_Zyw2w8x1SD5Gg",
   authDomain: "vuegram-234.firebaseapp.com",
   databaseURL: "https://vuegram-234.firebaseio.com",
