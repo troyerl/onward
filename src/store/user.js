@@ -62,7 +62,19 @@ const actions = {
             context.commit(SET_CURRENT_USER, res.user)
             resolve()
           }).catch((err) => {
-            reject(err)
+        reject(err)
+      })
+    })
+  },
+
+  signup (context, creds) {
+    return new Promise((resolve, reject) => {
+      fb.auth.createUserWithEmailAndPassword(creds.email, creds.password)
+          .then((res) => {
+            context.commit(SET_CURRENT_USER, res.user)
+            resolve()
+          }).catch((err) => {
+        reject(err)
       })
     })
   },

@@ -39,7 +39,7 @@
                 <input v-model="formSignUp.confirmPassword" type="password" class="form-control" id="confirmPassword"
                        placeholder="Confirm Password">
               </div>
-<!--              <button @click="signup" type="submit" class="btn btn-primary">Signup</button>-->
+              <button @click="signupUser" type="submit" class="btn btn-primary">Signup</button>
               <div>
                 <small>Already have an account? <a @click="toggleForm" class="text-primary">Login</a></small>
               </div>
@@ -94,13 +94,24 @@
         }).then(() => {
           this.$router.push({name: 'Dashboard'})
         }).catch((err) => {
-
+          console.log(err.message)
+        })
+      },
+      signupUser() {
+        this.signup({
+          email: this.formSignUp.email,
+          password: this.formSignUp.password
+        }).then(() => {
+          this.$router.push({name: 'Dashboard'})
+        }).catch((err) => {
+          console.log(err.message)
         })
       },
 
 
       ...mapActions('user', [
-        'login'
+        'login',
+        'signup'
       ]),
     }
   }
