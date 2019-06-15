@@ -2,7 +2,7 @@
   <div id="navigation">
     <ul class="nav">
       <li class="nav-item">
-        <router-link class="nav-link" :to="{name: 'Home'}">Onward!</router-link>
+        <router-link class="nav-link" :to="{name: 'Home'}">Onward >>></router-link>
       </li>
       <li class="nav-item ml-auto">
         <router-link class="nav-link" :to="{name: 'Home'}">Home</router-link>
@@ -18,7 +18,7 @@
       </li>
 
       <li class="nav-item dropdown" v-if="currentUser">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{userProfile.firstName}} {{userProfile.lastName}}</a>
         <div class="dropdown-menu">
           <router-link :to="{name: 'Profile'}" class="dropdown-item">Profile</router-link>
           <a class="dropdown-item" @click="logoutUser">Logout</a>
@@ -37,7 +37,8 @@
   export default {
     computed: {
       ...mapState('user', [
-        'currentUser'
+        'currentUser',
+          'userProfile'
       ])
     },
     methods: {

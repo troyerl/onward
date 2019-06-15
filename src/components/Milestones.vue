@@ -13,6 +13,12 @@
           <div class="jumbotron jumbo-example text-left" v-for="ms in milestones">
             <h1 class="mb-4">{{ms.title}}</h1>
             <hr>
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center" v-for="task in ms.tasks">
+                {{task.title}}
+                <span class="badge badge-primary badge-pill">points: {{task.points}}</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
