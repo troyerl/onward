@@ -14,7 +14,6 @@ fb.auth.onAuthStateChanged((curUser) => {
     store.dispatch(`user/fetchUserProfile`)
 
     fb.usersCollection.doc(curUser.uid).onSnapshot((doc) => {
-      console.log('profile update')
       store.commit(`user/${SET_PROFILE}`, doc.data())
     })
   }

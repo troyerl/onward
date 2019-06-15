@@ -17,7 +17,14 @@
             <hr>
             <div class="example-group">
               <div>
-
+                <ul>
+                  <li v-for="ms in milestones">
+                    {{ms.title}}
+                    <ul>
+                      <li v-for="task in ms.tasks">{{task.title}}</li>
+                    </ul>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -29,6 +36,8 @@
 
 <script>
   import fb from '../fb'
+  import {mapMutations, mapState} from "vuex";
+  import {UPDATE_MILESTONES} from "../store/mutationsTypes";
 
   export default {
     name: "Milestones",
@@ -42,8 +51,40 @@
         ]
       }
     },
+    computed: {
+
+      ...mapState('user', {
+        currentUser: state => state.currentUser,
+      }),
+      ...mapState('milestones', {
+        milestones: state => state.milestones,
+      })
+    },
+    methods: {
+
+      ...mapMutations('milestones', {
+        updateMilestones: UPDATE_MILESTONES,
+      })
+    },
     created() {
-      fb.db.collection('milestones').where('')
+      fb.db.collection('users').doc(this.currentUser.uid).onSnapshot((snapshot) => {
+        let msRefs = snapshot.data().milestones
+        let milestones = []
+        msRefs.forEach((msRef) => {
+          msRef.get().then((msDoc) => {
+            let taskRefs = msDoc.data().tasks
+            let tasks = []
+            taskRefs.forEach((taskRef) => {
+              taskRef.get().then((taskDoc) => {
+                tasks.push(taskDoc.data())
+              })
+            })
+            let milestone = {...msDoc.data(), tasks: tasks}
+            milestones.push(milestone)
+          })
+        })
+        this.updateMilestones(milestones)
+      })
     }
   }
 </script>

@@ -1,9 +1,11 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
 import fb from '../fb'
-import {SET_CURRENT_USER, SET_PROFILE} from "./mutationsTypes";
+import {SET_CURRENT_USER, SET_PROFILE, UPDATE_MILESTONES} from "./mutationsTypes";
 import uuidv4 from 'uuid/v4'
 
-const state = {}
+const state = {
+  milestones: []
+}
 
 // Getters are to Vuex state as 'computed' is to individual components
 const getters = {
@@ -32,6 +34,10 @@ const mutations = {
     call with: ...mapMutations['egMutation'], then this.egMutation({type: EG_MUTATION, payload: obj})
 
   */
+
+  [UPDATE_MILESTONES] (state, payload) {
+    state.milestones = payload
+  }
 }
 
 // Actions are how to do ASYNC work (eg, reach out to backend), and will eventually COMMIT a mutation
