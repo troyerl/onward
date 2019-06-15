@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import Auth from '../components/Auth'
 import Dashboard from "../components/Dashboard/Dashboard";
 import Profile from "../components/Dashboard/Profile";
+import Milestones from "../components/Dashboard/Milestones";
 
 
 
@@ -40,9 +41,17 @@ const router = new Router({
       }
     },
     {
-      path: '/user/dashboard/profile',
+      path: '/user/profile',
       name: 'Profile',
       component: Profile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/user/milestones',
+      name: 'Milestone',
+      component: Milestones,
       meta: {
         requiresAuth: true
       }

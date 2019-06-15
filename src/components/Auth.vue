@@ -68,7 +68,7 @@
           first: '',
           last: '',
           email: '',
-          dob: ''
+          dob: Date.now()
         },
         showLoginForm: true,
         showForgotPassword: false,
@@ -100,7 +100,10 @@
       signupUser() {
         this.signup({
           email: this.formSignUp.email,
-          password: this.formSignUp.password
+          password: this.formSignUp.password,
+          firstName: this.formSignUp.first,
+          lastName: this.formSignUp.last,
+          dob: this.formSignUp.dob
         }).then(() => {
           this.$router.push({name: 'Dashboard'})
         }).catch((err) => {
@@ -111,7 +114,8 @@
 
       ...mapActions('user', [
         'login',
-        'signup'
+        'signup',
+        'logout'
       ]),
     }
   }
