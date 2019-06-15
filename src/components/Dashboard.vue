@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   export default {
     name: "Dashboard",
     data() {
@@ -28,6 +28,12 @@
       ...mapState('user', {
         profile: state => state.userProfile
       }),
+    },
+    methods: {
+
+      ...mapActions('milestones', [
+              'completeTask'
+      ])
     }
   }
 </script>

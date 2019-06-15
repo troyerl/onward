@@ -112,7 +112,6 @@
         })
       },
 
-
       ...mapActions('user', [
         'login',
         'signup',
