@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import routes from './routes'
 import Home from '../components/Home'
 import Auth from '../components/Auth'
 import Dashboard from "../components/Dashboard/Dashboard";
@@ -15,7 +14,7 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: routes.index
+      redirect: '/'
     },
     {
       path: '/',
