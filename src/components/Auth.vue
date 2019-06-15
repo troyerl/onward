@@ -80,7 +80,8 @@
 
 
       ...mapState('user', {
-        currentUser: state => state.currentUser
+        currentUser: state => state.currentUser,
+        profile: state => state.userProfile
       }),
     },
     methods: {

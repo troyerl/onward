@@ -3,6 +3,7 @@
     <p class="test">Dashboard</p>
     <div>
       <p>Level {{level}}</p>
+      <p>{{profile.firstName}}</p>
       <div class="levelBar">
 
       </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
     name: "Dashboard",
     data() {
@@ -20,6 +22,11 @@
         xp: 0,
         level: 1
       }
+    },
+    computed: {
+      ...mapState('user', {
+        profile: state => state.userProfile
+      }),
     }
   }
 </script>
