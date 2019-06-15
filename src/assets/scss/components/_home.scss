@@ -1,0 +1,24 @@
+#home{
+  padding: 30px;
+  .jumbotron{
+    background-color: rgb(117,185,184);
+    .home-h1{
+      font-size: 100px;
+      font-family: "Brush Script MT";
+      color: white;
+    }
+    .home-info{
+      font-family: "Arial Black";
+      color: rgb(43,60,76);
+    }
+    .home-info2{
+      font-family: "Arial Black";
+      color: rgb(43,60,76);
+    }
+    .home-btn{
+      /*color: rgb(218,178,67)*/;
+
+    }
+
+  }
+}
