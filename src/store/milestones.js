@@ -1,5 +1,7 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
 import fb from '../fb'
+import {SET_CURRENT_USER, SET_PROFILE} from "./mutationsTypes";
+import uuidv4 from 'uuid/v4'
 
 const state = {
 
@@ -47,10 +49,30 @@ const actions = {
     call with: this.$store.<module>.dispatch('egAction', payload)
     call with: ...mapActions['egAction'], then this.egAction(payload)
   */
+
+  login(context, milestone) {
+    return new Promise((resolve, reject) => {
+      let tasks = milestone.tasks
+      let taskRefs = []
+
+      tasks.forEach((task) => {
+        let tid = uuidv4()
+        let taskRef = fb.db.collection('tasks').doc(tid)
+        taskRefs.push(taskRef)
+        taskRef.set({
+          title: task.title,
+          complete: false,
+          points: 10,
+        })
+      })
+
+      console.log(taskRefs)
+    })
+  },
 }
 
 export default {
-  namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
+  namespaced: false, // makes us use store.<module>.xyz, instead of one global store.xyz
   state,
   mutations,
   actions
