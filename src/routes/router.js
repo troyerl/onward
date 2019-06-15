@@ -5,6 +5,7 @@ import routes from './routes'
 import Home from '../components/Home'
 import Auth from '../components/Auth'
 import Dashboard from "../components/Dashboard/Dashboard";
+import Profile from "../components/Dashboard/Profile";
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ const router = new Router({
             path: '/user/dashboard',
             name: 'Dashboard',
             component: Dashboard
+        },
+        {
+            path: '/user/dashboard/profile',
+            name: 'Profile',
+            component: Profile
         }
     ]
 })
