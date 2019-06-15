@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="jumbotron">
-      <h1 class="display-4 home-h1">ONWARD!</h1>
+      <h1 class="display-4">ONWARD!</h1>
       <p class="lead home-info">Simple app to stay on track</p>
       <hr class="my-4 home-line">
       <p class="home-info2">TEMP</p>
