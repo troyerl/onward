@@ -3,7 +3,7 @@
     <p class="test">Dashboard</p>
     <div>
       <p>Level {{level}}</p>
-      <p>{{profile.first}}</p>
+      <p>{{profile.firstName}}</p>
       <div class="levelBar">
 
       </div>
