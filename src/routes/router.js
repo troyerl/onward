@@ -75,7 +75,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !currentUser) {
     next('/login')
   } else if (routeIsLogin && currentUser) {
-    next('dashboard')
+    next('/dashboard')
   } else {
     next()
   }
