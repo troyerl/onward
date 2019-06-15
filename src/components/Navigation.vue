@@ -5,7 +5,7 @@
         <router-link class="nav-link" :to="{name: 'Home'}">Onward!</router-link>
       </li>
       <li class="nav-item ml-auto">
-        <router-link class="nav-link" href="#" :to="{name: 'Home'}">Home</router-link>
+        <router-link class="nav-link" :to="{name: 'Home'}">Home</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" :to="{name: 'Auth'}">Login/Sign-Up</router-link>
@@ -27,11 +27,13 @@
 </template>
 
 <script>
-  import {mapstate} from 'vuex'
+  import {mapState} from 'vuex'
 
   export default {
-    /*computed: {
-      ...mapstate(['currentUser'])
-    }*/
+    computed: {
+      ...mapState('user', [
+        'currentUser'
+      ])
+    }
   }
 </script>

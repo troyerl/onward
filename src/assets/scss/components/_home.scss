@@ -1,9 +1,11 @@
-#home{
-background-color: red;
+#home {
+  background-color: red;
   height: 100%;
-  .jumbotron{
+
+  .jumbotron {
     background-image: url("~@/assets/template (1).png");
-    h1{
+
+    h1 {
 
       -webkit-text-stroke-width: 2px;
       -webkit-text-stroke-color: black;
@@ -11,9 +13,10 @@ background-color: red;
       font-family: "Times New Roman";
       color: white;
     }
-    .home-info2{
+
+    .home-info2 {
       font-family: "Arial Black";
-      color: rgb(43,60,76);
+      color: rgb(43, 60, 76);
     }
 
 
