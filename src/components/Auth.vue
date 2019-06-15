@@ -14,7 +14,7 @@
                 <input v-model="formLogin.password" type="password" class="form-control" id="exampleInputPassword1"
                        placeholder="Password">
               </div>
-              <button type="submit" @click="loginUser" class="btn btn-primary">Submit</button>
+              <button type="submit" @click="loginUser" class="btn btn-primary">Login</button>
               <div>
                 <small>Don't have an account? <a @click="toggleForm" class="text-primary">Create an Account</a></small>
               </div>
@@ -39,7 +39,7 @@
                 <input v-model="formSignUp.confirmPassword" type="password" class="form-control" id="confirmPassword"
                        placeholder="Confirm Password">
               </div>
-<!--              <button @click="signup" type="submit" class="btn btn-primary">Submit</button>-->
+<!--              <button @click="signup" type="submit" class="btn btn-primary">Signup</button>-->
               <div>
                 <small>Already have an account? <a @click="toggleForm" class="text-primary">Login</a></small>
               </div>
@@ -100,7 +100,7 @@
 
 
       ...mapActions('user', [
-          'login'
+        'login'
       ]),
     }
   }
