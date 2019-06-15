@@ -44,7 +44,7 @@ const mutations = {
     state.currentUser = payload
   },
 
-  [UPDATE_CURRENT_MILESTONE] (state, payload) {
+  [UPDATE_CURRENT_MILESTONE](state, payload) {
     state.currentMS = payload
   }
 }
@@ -122,17 +122,17 @@ const actions = {
       })
     })
   },
-    updatePoints(context, task){
-        return new Promise((resolve, reject)=> {
-            fb.db.collection('user').doc(context.state.currentUser.uid).update({
-                xp: context.state.userProfile.xp + task.points
-            }).then(()=>{
-                resolve()
-            }).catch((err)=>{
-                reject(err)
-            })
-        })
-    }
+  updatePoints(context, task) {
+    return new Promise((resolve, reject) => {
+      fb.db.collection('users').doc(context.state.currentUser.uid).update({
+        xp: context.state.userProfile.xp + task.points
+      }).then(() => {
+        resolve()
+      }).catch((err) => {
+        reject(err)
+      })
+    })
+  }
 }
 
 export default {

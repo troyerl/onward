@@ -74,7 +74,7 @@
     methods: {
       markOffTask(task) {
         this.completeTask(task)
-        // this.updatePoints(task)
+        this.updatePoints(task)
       },
       ...mapActions('milestones', [
               'completeTask'
