@@ -1,6 +1,7 @@
 import routes from 'routes'
 
 import Home from '../components/Home'
+import Auth from '../components/Auth'
 
 const router = new Router({
     mode: 'history',
@@ -13,6 +14,11 @@ const router = new Router({
             path: routes.index,
             name: 'Home',
             component: Home
+        },
+        {
+            path: routes.auth,
+            name: 'Auth',
+            component:Auth
         }
     ]
 })
