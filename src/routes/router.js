@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import routes from './routes'
 import Home from '../components/Home'
 import Auth from '../components/Auth'
+import Dashboard from "../components/Dashboard/Dashboard";
 
 Vue.use(Router)
 
@@ -15,14 +16,19 @@ const router = new Router({
             redirect: routes.index
         },
         {
-            path: routes.index,
+            path: '/',
             name: 'Home',
             component: Home
         },
         {
-            path: routes.auth,
+            path: '/auth',
             name: 'Auth',
             component: Auth
+        },
+        {
+            path: '/user/dashboard',
+            name: 'Dashboard',
+            component: Dashboard
         }
     ]
 })
