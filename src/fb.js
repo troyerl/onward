@@ -1,5 +1,4 @@
 import firebase from 'firebase'
-import 'firebase/firestore'
 
 // firebase init goes here
 var firebaseConfig = {
