@@ -1,22 +1,14 @@
-import fb from '../fb'
+import {db} from '../fb'
 
 import users from './users'
-import conversations from './conversations'
-
-import config from '../config'
-
-firebase.initializeApp(config)
-
-Vue.use(Vuex)
 
 const state = {
-  db: firebase.firestore()
+  db, // not sure if needed yet, depends on how components use it. Time will tell shortly
 }
 
 export default new Vuex.Store({
   state,
   modules: {
     users,
-    conversations
   }
 })
