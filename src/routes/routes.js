@@ -1,4 +1,5 @@
 export default {
   index: '/',
-  auth: '/auth'
+  auth: '/auth',
+  dashboard: '/user/dashboard'
 }

@@ -1,0 +1,12 @@
+#dashboard {
+  .levelBar {
+    width: 80%;
+    height: 40px;
+    background-color: #eee;
+    margin: auto;
+    transition: width 500ms;
+  }
+  .test {
+    font-weight: bold;
+  }
+}

@@ -5,9 +5,7 @@
       <p class="lead home-info text-right">Simple app to stay on track</p>
       <p class="home-info2 text-right">TEMP</p>
       <router-link class="btn btn-primary btn-lg home-btn" :to="{name: 'Auth'}" role="button" >Login/SignUp</router-link>
-
     </div>
-
   </div>
 </template>
 
