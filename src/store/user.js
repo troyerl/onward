@@ -122,10 +122,10 @@ const actions = {
       })
     })
   },
-    updatePoints(context, xpAmount){
+    updatePoints(context, task){
         return new Promise((resolve, reject)=> {
             fb.db.collection('user').doc(context.state.currentUser.uid).update({
-                xp: xpAmount
+                xp: context.state.userProfile.xp + task.points
             }).then(()=>{
                 resolve()
             }).catch((err)=>{

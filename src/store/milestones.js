@@ -35,7 +35,7 @@ const mutations = {
 
   */
 
-  [UPDATE_MILESTONES] (state, payload) {
+  [UPDATE_MILESTONES](state, payload) {
     state.milestones = payload
   },
 }
@@ -88,21 +88,43 @@ const actions = {
   },
   completeTask(context, task) {
     return new Promise((resolve, reject) => {
-      task.ref.update({
-        completed: true
+      // console.log('complete task')
+      // console.log(task)
+      fb.db.collection('tasks').doc(task.ref.id).update({
+        complete: true
       }).then(() => {
-        resolve()
-      }).catch((err) => {
-        reject(err)
+        fb.db.collection('users').doc(context.rootState.user.currentUser.uid).onSnapshot((snapshot) => {
+          let msRefs = snapshot.data().milestones
+          let milestones = []
+          msRefs.forEach((msRef) => {
+            msRef.get().then((msDoc) => {
+              // console.log(msDoc.data())
+              let taskRefs = msDoc.data().tasks
+              let tasks = []
+              taskRefs.forEach((taskRef) => {
+                taskRef.get().then((taskDoc) => {
+                  let task = {...taskDoc.data(), ref: taskRef}
+                  tasks.push(task)
+                })
+              })
+              let milestone = {...msDoc.data(), tasks: tasks, ref: msRef}
+              milestones.push(milestone)
+            })
+          })
+          context.commit(UPDATE_MILESTONES, milestones)
+        })
+          resolve()
+        }).catch((err) => {
+          reject(err)
+        })
       })
-    })
+    }
   }
-}
 
 
-export default {
-  namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
-  state,
-  mutations,
-  actions
-}
+  export default {
+    namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
+    state,
+    mutations,
+    actions
+  }

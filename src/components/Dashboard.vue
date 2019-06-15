@@ -23,13 +23,13 @@
                 <hr>
                 <div class="accordion" :id="'m' + ms.ref.id | first5">
                   <div class="card" v-for="task in ms.tasks" style="cursor: pointer">
-                    <div class="card-header" id="headingOne" data-toggle="collapse"
+                    <div class="card-header" id="headingOne" >
+                      <p class="mb-0 d-flex justify-content-between align-items-center font-weight-bold text-danger" data-toggle="collapse"
                          :data-target="'#t' + task.ref.id | first5">
-                      <p class="mb-0 d-flex justify-content-between align-items-center font-weight-bold text-danger">
-                        {{task.title}}
+                        <del v-if="task.complete">{{task.title}}</del><span v-else>{{task.title}}</span>
                         <span class="badge badge-dark badge-pill">points: {{task.points}}</span>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="completeTask(profile.xp + 10)">Complete Task</button>
                       </p>
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="markOffTask(task)">Complete Task</button>
                     </div>
                     <Resources :task="task" :ms="ms"></Resources>
                   </div>
@@ -55,7 +55,7 @@
     filters: {
       first5: (val) => {
         return val.charAt(0) === '#' ? val.substr(0, 6) : val.substr(0, 5)
-      }
+      },
     },
     data() {
       return {
@@ -72,14 +72,15 @@
       })
     },
     methods: {
-      ...mapMutations('milestones', {
-        updateMilestones: UPDATE_MILESTONES,
-      }),
-      ...mapMutations('user', {
-        updateCurrentMilestone: UPDATE_CURRENT_MILESTONE,
-      }),
+      markOffTask(task) {
+        this.completeTask(task)
+        // this.updatePoints(task)
+      },
       ...mapActions('milestones', [
               'completeTask'
+      ]),
+      ...mapActions('user', [
+        'updatePoints'
       ]),
       ...mapMutations('milestones', {
         updateMilestones: UPDATE_MILESTONES,
@@ -94,7 +95,7 @@
         let milestones = []
         msRefs.forEach((msRef) => {
           msRef.get().then((msDoc) => {
-            console.log(msDoc.data())
+            // console.log(msDoc.data())
             let taskRefs = msDoc.data().tasks
             let tasks = []
             taskRefs.forEach((taskRef) => {

@@ -4,7 +4,7 @@
          :data-parent="'#m' + ms.ref.id | first5">
       <div class="card-body bg-light">
         <p class="text-info">Perhaps these resources would help you:</p>
-        <div class="card my-1" v-for="res in matchedResources">
+        <div class="card my-1" v-for="res in fakeResources">
           <div class="card-body">
             <p class="font-weight-bold">{{res.name}}</p>
             <p>{{res.addressLine1}}<br>{{res.addressLine2}}</p>
