@@ -8,12 +8,14 @@
                             <h1 class="text-center mb-4">Login</h1>
                             <div class="form-group">
                                 <input v-model="formLogin.email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <input v-model="formLogin.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
                             <button type="submit" @click="login" class="btn btn-primary">Submit</button>
+                            <div>
+                                <small>Don't have an account? <a @click="toggleForm" class="text-primary">Create an Account</a></small>
+                            </div>
                         </form>
                         <form @submit.prevent v-else>
                             <h1 class="text-center mb-4">Sign Up</h1>
@@ -33,6 +35,9 @@
                                 <input v-model="formSignUp.confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
                             </div>
                             <button @click="signup" type="submit" class="btn btn-primary">Submit</button>
+                            <div>
+                                <small>Already have an account? <a @click="toggleForm" class="text-primary">Login</a></small>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -60,11 +65,10 @@
                     email: '',
                     dob: ''
                 },
-                showLoginForm: false,
+                showLoginForm: true,
                 showForgotPassword: false,
                 passwordResetSuccess: false,
                 performRequest: false,
-                errorMsg: ''
             }
         },
         methods: {
@@ -104,7 +108,7 @@
                 })
             },
             toggleForm(){
-
+                this.showLoginForm = !this.showLoginForm
             }
         }
     }
