@@ -1,23 +1,33 @@
 <template>
     <div id="milestoneForm">
-        <div class="jumbotron text-center">
-            <h1 class="display-4 text-center">Milestone</h1>
-            <hr>
-            <div class="form-group">
-                <input v-model="formSignUp.first" type="text" class="form-group" id="first" placeholder="Milestone Name">
-            </div>
-            <router-link class="btn btn-primary btn-lg" :to="{name: 'Auth'}" role="button">Add Task</router-link>
-            <router-link class="btn btn-primary btn-lg" :to="{name: 'Milestone'}" role="button">Add Milestone</router-link>
-        </div>
+        <button @click="createMilestone">Test Add Milestone</button>
     </div>
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     export default {
-        name: "MilestonesForm"
+        name: "MilestonesForm",
+        methods: {
+            createMilestone() {
+                this.addMilestone({
+                    title: 'Milestone 1',
+                    tasks: [
+                        {
+                            title: 'task 1',
+                        },
+                        {
+                            title: 'task 2',
+                        },
+                        {
+                            title: 'task 3',
+                        },
+                    ]
+                })
+            },
+            ...mapActions('milestones', [
+                'addMilestone'
+            ])
+        }
     }
 </script>
-
-<style scoped>
-
-</style>
