@@ -37,7 +37,7 @@ const mutations = {
 
   [UPDATE_MILESTONES] (state, payload) {
     state.milestones = payload
-  }
+  },
 }
 
 // Actions are how to do ASYNC work (eg, reach out to backend), and will eventually COMMIT a mutation
@@ -86,6 +86,17 @@ const actions = {
       })
     })
   },
+  completeTask(context, task) {
+    return new Promise((resolve, reject)=> {
+      task.ref.update({
+        completed: true
+      }).then(() => {
+        resolve()
+      }).catch((err) => {
+        reject(err)
+      })
+    })
+  }
 }
 
 export default {

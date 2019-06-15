@@ -1,13 +1,11 @@
 <template>
   <div id="home">
-  <div class="jumbotron">
-    <h1 class="display-4 text-right">ONWARD!</h1>
-    <p class="lead home-info text-right">Simple app to stay on track</p>
-    <p class="home-info2 text-right">TEMP</p>
-    <router-link class="btn btn-primary btn-lg home-btn" :to="{name: 'Auth'}" role="button">Login/SignUp</router-link>
+  <div class="jumbotron text-center " style="margin-top: 0.000001%">
+    <h1 class="display-3 home-title">ONWARD!</h1>
+    <router-link class="btn btn-danger btn-lg home-btn" :to="{name: 'Auth'}" role="button">Login/SignUp</router-link>
   </div>
     <div>
-      <h2>Future features</h2>
+      <h2 class="display-5 text-center">Future features</h2>
       <h4>
         <ul>
           <li>Preset milestones that allow for starting progress</li>
