@@ -1,23 +1,21 @@
 #home{
-
+background-color: red;
+  height: 100%;
   .jumbotron{
-    background-color: rgb(117,185,184);
-    background-image: url("~@/assets/Civichackbackground.png");
+    background-image: url("~@/assets/template (1).png");
     h1{
+
       -webkit-text-stroke-width: 2px;
-      -webkit-text-stroke-color: red;
-      font-size: 100px;
-      font-family: "Impact";
+      -webkit-text-stroke-color: black;
+      font-size: 150px;
+      font-family: "Times New Roman";
       color: white;
     }
     .home-info2{
       font-family: "Arial Black";
       color: rgb(43,60,76);
     }
-    .home-btn{
-      /*color: rgb(218,178,67)*/;
 
-    }
 
   }
 }
