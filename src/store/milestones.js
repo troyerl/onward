@@ -87,7 +87,7 @@ const actions = {
     })
   },
   completeTask(context, task) {
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       task.ref.update({
         completed: true
       }).then(() => {
@@ -98,6 +98,7 @@ const actions = {
     })
   }
 }
+
 
 export default {
   namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
