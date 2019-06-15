@@ -8,23 +8,23 @@ import Auth from '../components/Auth'
 Vue.use(Router)
 
 const router = new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '*',
-            redirect: routes.index
-        },
-        {
-            path: routes.index,
-            name: 'Home',
-            component: Home
-        },
-        {
-            path: routes.auth,
-            name: 'Auth',
-            component: Auth
-        }
-    ]
+  mode: 'history',
+  routes: [
+    {
+      path: '*',
+      redirect: routes.index
+    },
+    {
+      path: routes.index,
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: routes.auth,
+      name: 'Auth',
+      component: Auth
+    }
+  ]
 })
 
 export default router

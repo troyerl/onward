@@ -1,13 +1,10 @@
 // Toggles
 //
 // Used in conjunction with global variables to enable certain theme features.
-
 // Vendor
 @import "vendor/rfs";
-
 // Deprecate
 @import "mixins/deprecate";
-
 // Utilities
 @import "mixins/breakpoints";
 @import "mixins/hover";
@@ -21,7 +18,6 @@
 @import "mixins/text-hide";
 @import "mixins/text-truncate";
 @import "mixins/visibility";
-
 // // Components
 @import "mixins/alert";
 @import "mixins/buttons";
@@ -32,14 +28,12 @@
 @import "mixins/nav-divider";
 @import "mixins/forms";
 @import "mixins/table-row";
-
 // // Skins
 @import "mixins/background-variant";
 @import "mixins/border-radius";
 @import "mixins/box-shadow";
 @import "mixins/gradients";
 @import "mixins/transition";
-
 // // Layout
 @import "mixins/clearfix";
 @import "mixins/grid-framework";

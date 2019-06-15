@@ -5,7 +5,9 @@
       <p class="lead">Simple app to stay on track</p>
       <hr class="my-4">
       <p>TEMP</p>
-      <router-link class="btn btn-primary btn-lg" :to="{name: 'Auth'}" role="button" v-for="link in authLinks">{{link}}</router-link>
+      <router-link class="btn btn-primary btn-lg" :to="{name: 'Auth'}" role="button" v-for="link in authLinks">
+        {{link}}
+      </router-link>
     </div>
 
   </div>

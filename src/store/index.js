@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import fb from '../fb'
-import users from './users'
+import user from './user'
 
 Vue.use(Vuex)
 
@@ -13,6 +13,6 @@ const state = {
 export default new Vuex.Store({
   state,
   modules: {
-    users,
+    user,
   }
 })
