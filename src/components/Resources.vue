@@ -30,12 +30,28 @@
     name: "Resources",
     computed: {
       setState() {
-        this.resources.map
+
       }
     },
     data() {
       return {
         state: [],
+        fakeResources: [
+          {
+            name: ref.name,
+            website: 'https://jobhunt.com',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto at culpa cumque cupiditate dicta excepturi exercitationem expedita facere id, ipsa minus mollitia nam quia ratione sapiente similique sit voluptatum.',
+            addressLine1: '123 Main St',
+            addressLine2: 'Indinapolis, IN 46204'
+          },
+          {
+            name: 'Resume Help Inc',
+            website: 'https://resumehelp.com',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto at culpa cumque cupiditate dicta excepturi exercitationem expedita facere id, ipsa minus mollitia nam quia ratione sapiente similique sit voluptatum.',
+            addressLine1: '456 First St',
+            addressLine2: 'Indinapolis, IN 46204'
+          }
+        ],
         resources: [
           {
             ref: firebase.db.collection('data').doc('job').collection('resources'),
