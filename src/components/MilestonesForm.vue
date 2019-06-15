@@ -4,15 +4,15 @@
             <div class="row">
                 <div class="col">
                     <h1 class="display-4 text-center mt-5">Create Milestone</h1>
-                    <div class="jumbotron text-center">
+                    <div class="jumbotron text-center" style="background-color: rgb(250,229,232)">
                         <div class="form-group">
                             <input type="text" class="form-control" id="title" v-model="title" placeholder="Milestone Name">
                         </div>
                         <div v-for="task in tasks" class="form-group">
                             <input type="text" class="form-control" id="" v-model="task.title" placeholder="New Task">
                         </div>
-                        <button class="btn btn-primary btn-lg mr-4" @click="addTask" role="button">Add Task</button>
-                        <button class="btn btn-primary btn-lg" @click="createMilestone" role="button">Create Milestone</button>
+                        <button class="btn btn-danger btn-lg mr-4" @click="addTask" role="button">Add Task</button>
+                        <button class="btn btn-danger btn-lg" @click="createMilestone" role="button">Create Milestone</button>
                     </div>
                 </div>
             </div>
