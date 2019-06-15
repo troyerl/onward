@@ -1,5 +1,5 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
-import { SET_CURRENT_USER, EG_MUTATION } from './mutationsTypes'
+import { SET_CURRENT_USER } from './mutationsTypes'
 import fb from '../fb'
 
 const state = {
@@ -39,10 +39,6 @@ const mutations = {
   [SET_CURRENT_USER] (state, payload) {
     state.currentUser = payload
   },
-
-  [EG_MUTATION] (state, payload) {
-    state.egData = payload
-  }
 }
 
 // Actions are how to do ASYNC work (eg, reach out to backend), and will eventually COMMIT a mutation
@@ -70,15 +66,6 @@ const actions = {
       })
     })
   },
-
-  egAction (context, data) {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        context.commit(EG_MUTATION, data)
-        res(context.state.egData)
-      }, 1000)
-    })
-  }
 }
 
 export default {
