@@ -22,7 +22,6 @@ const actions = {
   store.dispatch('increment')
   */
 }
-}
 
 export default {
   namespaced: true,
