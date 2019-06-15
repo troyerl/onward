@@ -10,8 +10,6 @@
 </template>
 
 <script>
-  import routes from '../routes/routes'
-
   export default {
     data() {
       return {
