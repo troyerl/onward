@@ -7,23 +7,19 @@
             <form @submit.prevent>
               <h1 class="text-center mb-4">Your Information</h1>
               <div class="form-group">
-                <input v-model="userData.first" type="first" class="form-control" id="exampleInputFirstName1"
+                <input v-model="profile.firstName" type="first" class="form-control" id="exampleInputFirstName1"
                        placeholder="First Name">
               </div>
               <div class="form-group">
-                <input v-model="userData.last" type="last" class="form-control" id="exampleInputLastName1"
+                <input v-model="profile.lastName" type="last" class="form-control" id="exampleInputLastName1"
                        placeholder="Last Name">
               </div>
               <div class="form-group">
-                <input v-model="userData.email" type="email" class="form-control" id="exampleInputEmail1"
+                <input v-model="profile.email" type="email" class="form-control" id="exampleInputEmail1"
                        placeholder="Email">
               </div>
               <div class="form-group">
-                <input v-model="userData.password" type="text" class="form-control" id="exampleInputPassword1"
-                       placeholder="Password">
-              </div>
-              <div class="form-group">
-                <input v-model="userData.dob" type="dob" class="form-control" id="exampleInputDOB1"
+                <input v-model="profile.dob" type="dob" class="form-control" id="exampleInputDOB1"
                        placeholder="Date of Birth">
               </div>
               <button type="submit" @click="save" class="btn btn-primary">Save Changes</button>
@@ -36,16 +32,16 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name: "Profile",
     data() {
       return {
         userData: {
-          first: "Ehson",
-          last: "Umrani",
-          email: "123@live.com",
-          password: "password",
-          dob: "9-12-95"
+          first: this.profile.firstName,
+          last: this.profile.lastName,
+          email: this.profile.email,
+          dob: this.profile.dob
         }
       }
     },
@@ -53,6 +49,11 @@
       save() {
 
       }
+    },
+    computed: {
+      ...mapState('user', {
+        profile: state => state.userProfile
+      }),
     }
   }
 </script>
