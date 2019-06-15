@@ -37,7 +37,7 @@
 <script>
   import fb from '../fb'
   import {mapMutations, mapState} from "vuex";
-  import {UPDATE_MILESTONES} from "../store/mutationsTypes";
+  import {UPDATE_CURRENT_MILESTONE, UPDATE_MILESTONES} from "../store/mutationsTypes";
   import Resources from './Resources'
 
   export default {
@@ -67,6 +67,9 @@
 
       ...mapMutations('milestones', {
         updateMilestones: UPDATE_MILESTONES,
+      }),
+      ...mapMutations('user', {
+        updateCurrentMilestone: UPDATE_CURRENT_MILESTONE,
       })
     },
     created() {
@@ -75,6 +78,7 @@
         let milestones = []
         msRefs.forEach((msRef) => {
           msRef.get().then((msDoc) => {
+            console.log(msDoc.data())
             let taskRefs = msDoc.data().tasks
             let tasks = []
             taskRefs.forEach((taskRef) => {
@@ -88,6 +92,7 @@
           })
         })
         this.updateMilestones(milestones)
+        this.updateCurrentMilestone(milestones[0])
       })
     }
   }
