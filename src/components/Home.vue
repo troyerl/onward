@@ -5,7 +5,7 @@
     <router-link class="btn btn-danger btn-lg home-btn" :to="{name: 'Auth'}" role="button">Login/SignUp</router-link>
   </div>
     <div>
-      <h2>Future features</h2>
+      <h2 class="display-5 text-center">Future features</h2>
       <h4>
         <ul>
           <li>Preset milestones that allow for starting progress</li>

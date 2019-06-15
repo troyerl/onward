@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <input v-model="formSignUp.confirmPassword" type="password" class="form-control" id="confirmPassword"
-                       placeholder="Confirm Password" required>
+                       placeholder="Confirm Password">
               </div>
               <button @click="signupUser" type="submit" class="btn btn-danger">Signup</button>
               <div>
@@ -111,7 +111,6 @@
           console.log(err.message)
         })
       },
-
 
       ...mapActions('user', [
         'login',

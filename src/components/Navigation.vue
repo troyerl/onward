@@ -16,9 +16,8 @@
       <li class="nav-item" v-if="currentUser">
         <router-link class="nav-link btn-outline-danger" :to="{name: 'Milestone'}">Milestones</router-link>
       </li>
-
-      <li class="nav-item " v-if="currentUser">
-        <a class="nav-link dropdown-toggle btn-outline-danger" data-toggle="dropdown" href="#">Dropdown</a>
+      <li class="nav-item dropdown" v-if="currentUser">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{userProfile.firstName}} {{userProfile.lastName}}</a>
         <div class="dropdown-menu">
           <router-link :to="{name: 'Profile'}" class="dropdown-item">Profile</router-link>
           <a class="dropdown-item" @click="logoutUser">Logout</a>
@@ -36,7 +35,8 @@
   export default {
     computed: {
       ...mapState('user', [
-        'currentUser'
+        'currentUser',
+          'userProfile'
       ])
     },
     methods: {
