@@ -1,15 +1,15 @@
 <template>
   <div id="dashboard">
     <p class="test">Dashboard</p>
-    <div>
-      <p>Level {{level}}</p>
-      <p>{{profile.firstName}}</p>
-      <div class="levelBar">
-
-      </div>
-      <p>Level {{level + 1}}</p>
+    <div style="text-align: center">
+      <p style="display: inline-block; margin: 20px;">Level {{level}} </p>
+        <div class="progress" style="width: 75%; height: 25px; display: inline-block;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
+        </div>
+      <p style="display: inline-block; margin-left: 20px">Level {{level + 1}}</p>
+      <p>Welcome back {{name}} you muthfucka!</p>
     </div>
-
+    <p>Current Milstones: </p>
   </div>
 </template>
 
@@ -20,7 +20,8 @@
     data() {
       return {
         xp: 0,
-        level: 1
+        level: 1,
+        name: "Daniel"
       }
     },
     computed: {
