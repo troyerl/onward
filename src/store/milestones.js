@@ -1,12 +1,8 @@
 // import { EG_MUTATION } from './mutationsTypes' // import mutation types from a const's file
-import {SET_CURRENT_USER} from './mutationsTypes'
 import fb from '../fb'
-import uuidv4 from 'uuid/v4'
 
 const state = {
-  currentUser: null,
-  userProfile: {},
-  egData: {foo: 'test'},
+
 }
 
 // Getters are to Vuex state as 'computed' is to individual components
@@ -36,10 +32,6 @@ const mutations = {
     call with: ...mapMutations['egMutation'], then this.egMutation({type: EG_MUTATION, payload: obj})
 
   */
-
-  [SET_CURRENT_USER](state, payload) {
-    state.currentUser = payload
-  },
 }
 
 // Actions are how to do ASYNC work (eg, reach out to backend), and will eventually COMMIT a mutation
@@ -55,47 +47,6 @@ const actions = {
     call with: this.$store.<module>.dispatch('egAction', payload)
     call with: ...mapActions['egAction'], then this.egAction(payload)
   */
-
-  login(context, creds) {
-    return new Promise((resolve, reject) => {
-      fb.auth.signInWithEmailAndPassword(creds.email, creds.password)
-          .then((res) => {
-            context.commit(SET_CURRENT_USER, res.user)
-            resolve()
-          }).catch((err) => {
-        reject(err)
-      })
-    })
-  },
-  signup(context, creds) {
-    return new Promise((resolve, reject) => {
-      fb.auth.createUserWithEmailAndPassword(creds.email, creds.password)
-          .then((res) => {
-            context.commit(SET_CURRENT_USER, res.user)
-            let userId = uuidv4()
-            fb.db.collection('users').doc(userId).set({
-              email: creds.email,
-              firstName: creds.firstName,
-              lastName: creds.lastName,
-              dob: creds.dob,
-              xp: 0
-            })
-            resolve()
-          }).catch((err) => {
-        reject(err)
-      })
-    })
-  },
-    logout(context){
-      return new Promise((resolve,reject) => {
-          fb.auth.signOut().then(() => {
-              context.commit(SET_CURRENT_USER, null)
-              resolve()
-          }).catch((err) => {
-              reject(err)
-          })
-      })
-    }
 }
 
 export default {
