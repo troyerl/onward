@@ -13,18 +13,16 @@
           <li>Resources will become available based off keywords from user created milestones</li>
           <li>We accomplished the challenge by providing users with an interactive way to stay motivated about accomplishing re-entry tasks</li>
           <li>We also supplied users with a searched based resource finder that focuses on just what is near them</li>
-
         </ul>
 
-      <h2 class="display-5 text-center">Future features</h2>
-      <h4>
+      <h2 class="display-5 text-left">Future features</h2>
         <ul>
           <li>Preset milestones that allow for starting progress</li>
           <li>DOB inclusion: different older age groups have access to more/ different preset milestones</li>
           <li>Recurring milestones based on date: Do taxes... ect</li>
           <li>Location based milestone verification that are worth more points</li>
         </ul>
-      </h4>
+
 
     </div>
 </div>
