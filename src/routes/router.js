@@ -67,21 +67,7 @@ const router = new Router({
   ]
 })
 
-<<<<<<< HEAD
-// router.beforeEach((to, from, next) => {
-//   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
-//   const routeIsLogin = to.matched.some(x => x.path === '/auth')
-//   const currentUser = firebase.auth().currentUser
-//
-//   if (requiresAuth && !currentUser) {
-//     next('/login')
-//   } else if (routeIsLogin && currentUser) {
-//     next('dashboard')
-//   } else {
-//     next()
-//   }
-// })
-=======
+
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
   const routeIsLogin = to.matched.some(x => x.path === '/auth')
@@ -95,6 +81,6 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
->>>>>>> components
+
 
 export default router

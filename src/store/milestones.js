@@ -71,6 +71,10 @@ const actions = {
         title: milestone.title,
         dueDate: milestone.dueDate,
         tasks: taskRefs,
+      }).then(() => {
+        resolve()
+      }).catch((err) => {
+        reject(err)
       })
     })
   },
