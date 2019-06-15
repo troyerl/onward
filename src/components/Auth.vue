@@ -1,9 +1,21 @@
 <template>
     <div id="auth">
-        <form @submit.prevent>
-            <h1>Login</h1>
-
-        </form>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="jumbotron">
+                        <form @submit.prevent>
+                            <h1>Login</h1>
+                            <form action="" @submit.prevent>
+                                <input type="text" placeholder="Email" v-model="formLogin.email"/>
+                                <input type="password" placeholder="Password" v-model="formLogin.password"/>
+                                <button class="btn btn-primary" @click="login">Login</button>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -13,7 +25,7 @@
         data(){
             return {
                 formLogin: {
-                    username: '',
+                    email: '',
                     password: ''
                 },
                 formSignUp: {
