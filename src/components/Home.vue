@@ -9,16 +9,11 @@
     <div>
       <h2 class="display-5 text-center">Future features</h2>
       <h4>
-        <ul { display:table; margin:0 auto;}>
+        <ul>
           <li>Preset milestones that allow for starting progress</li>
           <li>DOB inclusion: different older age groups have access to more/ different preset milestones</li>
           <li>Recurring milestones based on date: Do taxes... ect</li>
           <li>Data set integration from key words.  Add resources to milestones to help goal achievement</li>
-        </ul>
-        <ul>
-
-
-
         </ul>
 
       </h4>
