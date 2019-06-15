@@ -22,7 +22,8 @@
                         {
                             title: 'task 3',
                         },
-                    ]
+                    ],
+                    dueDate: Date.now(),
                 })
             },
             ...mapActions('milestones', [

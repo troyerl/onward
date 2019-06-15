@@ -50,7 +50,7 @@ const actions = {
     call with: ...mapActions['egAction'], then this.egAction(payload)
   */
 
-  login(context, milestone) {
+  addMilestone(context, milestone) {
     return new Promise((resolve, reject) => {
       let tasks = milestone.tasks
       let taskRefs = []
@@ -66,13 +66,18 @@ const actions = {
         })
       })
 
-      console.log(taskRefs)
+      let mid = uuidv4()
+      fb.db.collection('milestones').doc(mid).set({
+        title: milestone.title,
+        dueDate: milestone.dueDate,
+        tasks: taskRefs,
+      })
     })
   },
 }
 
 export default {
-  namespaced: false, // makes us use store.<module>.xyz, instead of one global store.xyz
+  namespaced: true, // makes us use store.<module>.xyz, instead of one global store.xyz
   state,
   mutations,
   actions
