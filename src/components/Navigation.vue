@@ -20,7 +20,7 @@
       <li class="nav-item dropdown" v-if="currentUser">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
         <div class="dropdown-menu">
-          <router-link :to="{name: 'Profile'}" class="dropdown-item" @click="">Profile</router-link>
+          <router-link :to="{name: 'Profile'}" class="dropdown-item">Profile</router-link>
           <a class="dropdown-item" @click="logoutUser">Logout</a>
         </div>
       </li>
