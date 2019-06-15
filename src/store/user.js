@@ -6,7 +6,6 @@ import uuidv4 from 'uuid/v4'
 const state = {
   currentUser: null,
   userProfile: {},
-  egData: {foo: 'test'},
 }
 
 // Getters are to Vuex state as 'computed' is to individual components
